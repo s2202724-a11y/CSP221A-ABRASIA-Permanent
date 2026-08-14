@@ -35,3 +35,9 @@ if __name__ == "__main__":
 
     print("\n--- Testing run_task_safely (Battery Depleted Run) ---")
     run_task_safely(drone_lowBattery)
+
+    # Testing Decorator
+    print("\n--- Testing @log_action Decorator Metadata ---")
+    print(
+        f"Method Name: {CleaningRobot.perform_task.__name__}"
+    )  # Should print 'perform_task'
