@@ -18,6 +18,11 @@ class Robot(ABC):
         self.battery = battery  # Ensuring battery life is between 0 and 100 only
         Robot.population += 1
 
+    # Alternative Contructor to create an instance of the class from a dictionary
+    @classmethod
+    def from_config(cls, config: dict):
+        return cls(**config)
+
     # Property method
     @property
     def battery(self):
