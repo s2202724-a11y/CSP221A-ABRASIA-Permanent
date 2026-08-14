@@ -6,5 +6,5 @@ class DroneRobot(Robot):
         self.max_alt = max_alt  # Added attribute for this subclass only
 
     def perform_task(self):
-        self.battery -= 15 # Decrease cost of this subclass
+        self.use_battery(15) # Decrease cost of this subclass
         return f"{self.name} is operating at an altitude of {self.max_alt}. The battery is now at {self.battery}%."

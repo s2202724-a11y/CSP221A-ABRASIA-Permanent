@@ -6,5 +6,5 @@ class CleaningRobot(Robot):
         self.dust_capacity = dust_capacity # Added attributed for this subclass only
 
     def perform_task(self):
-        self.battery -= 10 # Decrease cost of this subclass
+        self.use_battery(10) # Decrease cost of this subclass
         return f"{self.name} is cleaning. The battery is now at {self.battery}% and the dust capacity is {self.dust_capacity} units."

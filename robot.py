@@ -1,5 +1,13 @@
 from abc import ABC, abstractmethod
 
+# The class of Custom Exception
+class InsufficientBatteryError(Exception):
+    def __init__(self, name: str, required: int, available: int):
+        self.name = name
+        self.required = required
+        self.available = available
+        super().__init__(f'{self.name} needs a battery of {self.required}% for this task to be performed, but only has {self.available}% battery available.')
+
 # Base class for all robots
 class Robot(ABC):
     manufacturer = "Dredd Industries"
@@ -24,6 +32,12 @@ class Robot(ABC):
             self._battery = 100
         else:
             self._battery = value
+
+    # Custom Exception class for Insufficient Battery
+    def use_battery(self, amount: int):
+        if self.battery < amount:
+            raise InsufficientBatteryError(self.name, amount, self.battery)
+        self.battery -= amount
 
     def __str__(self) -> str:
         return f"{self.name} (Battery: {self.battery}%)"
